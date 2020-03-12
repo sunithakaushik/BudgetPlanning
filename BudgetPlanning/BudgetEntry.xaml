@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             BackgroundColor="Black"
+             mc:Ignorable="d"
+             x:Class="BudgetPlanning.BudgetEntry"
+             Title="Budget Goal">
+    <StackLayout Margin="20,10,35,30">
+        <Label Text="Enter your Monthly Budget:" 
+               TextColor="HotPink" 
+               FontSize="20"/>
+        <Editor x:Name="editor"
+                Text="{Binding Text}"
+                TextColor="Black"
+                Margin="0, 20, 0, 30"
+                WidthRequest="600"
+                Placeholder="Monthly expense goal ($)"
+                HeightRequest="100" 
+                BackgroundColor="Beige"
+                Keyboard="Numeric"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Text="Save" 
+                    BackgroundColor="#77D065"
+                    Clicked="OnSaveButtonClicked"
+                    FontSize="18"
+                    TextColor="#FFFFFF"/>
+            <Button Grid.Column="1"
+                    Text="Cancel" 
+                    FontSize="18"
+                    BackgroundColor="#77D065"
+                    TextColor="#FFFFFF"
+                    Clicked="OnCancelButtonClicked"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="BudgetPlanning.ExpenseEntry"
+             Title="Monthly Expense Entry">
+    <ContentPage.Content>
+        <StackLayout Padding="18" Spacing="15">
+
+            <Label Text="Date:" FontSize="20" TextColor="Beige"/>
+            <DatePicker x:Name="datepicker" 
+                        BackgroundColor="Beige" 
+                        Date="{Binding SelectedDate}"/>
+
+
+            <Label Text="Expense Name:" FontSize="20" TextColor="Beige"/>
+            <Entry x:Name="ExpenseName"
+                   Placeholder="Enter Expense Name" 
+                   BackgroundColor="Beige"
+                   ClearButtonVisibility="WhileEditing"
+                   Text="{Binding Text}"/>
+
+            <Label Text="Expense:" FontSize="20" TextColor="Beige"/>
+            <Entry x:Name="ExpenseTotal"
+                    Placeholder="0.00"
+                    Keyboard="Numeric"
+                    BackgroundColor="Beige"
+                    ClearButtonVisibility="WhileEditing"
+                    Text="{Binding Amount}"/>
+
+            <Label Text="Category:" FontSize="20" TextColor="Beige"/>
+            <Picker x:Name="CategoryPicker"
+                    Title="Choose Category" 
+                    TitleColor="Black"
+                    BackgroundColor="Beige"/>
+
+            <Button Text="Save"
+                FontSize="18"
+                BackgroundColor="#77D065"
+                TextColor="#FFFFFF"
+                HorizontalOptions="FillAndExpand"
+                Clicked="OnSaveButtonClicked"/>
+
+            <Button Text="Cancel"
+                FontSize="18"
+                BackgroundColor="#77D065"  
+                TextColor="#FFFFFF" 
+                HorizontalOptions="FillAndExpand"                                   
+                Clicked="OnCancelButtonClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
