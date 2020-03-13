@@ -25,15 +25,13 @@ namespace BudgetPlanning
         {
             base.OnAppearing();
 
-            var myBudget = new List<Budget>();
             var files = Directory.GetFiles(App.FolderPath, "*.MonthlyBudget.txt");
             if (files.Length != 0)
             {
                 filename = files[0];
                 string budget = File.ReadAllText(filename);
                 editor.Text = budget;
-
-                Navigation.PushAsync(new ExpenseList());
+        //        Navigation.PushAsync(new ExpenseList());
             }
             else
             {
@@ -61,14 +59,14 @@ namespace BudgetPlanning
             await Navigation.PushAsync(new ExpenseList());
         }
 
-        private void OnCancelButtonClicked(object sender, EventArgs e)
+        async void OnCancelButtonClicked(object sender, EventArgs e)
         {
             if (File.Exists(filename))
             {
                 File.Delete(filename);
             }
             editor.Text = string.Empty;
-         //   await Navigation.PopAsync();
+            await Navigation.PopAsync();
         }
         /*  private async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
           {

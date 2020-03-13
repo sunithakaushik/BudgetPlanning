@@ -8,12 +8,13 @@ namespace BudgetPlanning.Model
     {
         public DateTime Date { get; set; }
         public string Amount { get; set; }
-        public string Category { get; set; }
         public string Filename { get; set; }
+
+        public Budget()
+        { }
+        public Budget(string goal)
+        {
+            Amount = goal;
+        }
     }
-    public enum BudgetCategory
-    {
-        CarryOver,
-        Salary
-    };
 }

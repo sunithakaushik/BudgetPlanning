@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="BudgetPlanning.ExpenseList"
+             BackgroundColor="Black"
              Title="Expenses List">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add expense"

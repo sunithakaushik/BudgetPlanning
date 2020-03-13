@@ -4,6 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             Title="My Expence Application"
+             BackgroundColor="Black"
              x:Class="BudgetPlanning.MainPage">
 
     <StackLayout>
@@ -15,14 +17,12 @@
                VerticalOptions="CenterAndExpand" />
         <Image x:Name="MyImage" Source="piggybank1.jpg"/>
         <Label 
-                Text="Please add your budget first."
+                Text="Enter your budget goal"
                 TextColor="HotPink"
                 FontSize="30"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"          
                 VerticalOptions="CenterAndExpand" />
-
-
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

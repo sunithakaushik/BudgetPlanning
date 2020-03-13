@@ -23,7 +23,7 @@
                    Text="{Binding Text}"/>
 
             <Label Text="Expense:" FontSize="20" TextColor="Beige"/>
-            <Entry x:Name="ExpenseTotal"
+            <Entry x:Name="ExpenseAmount"
                     Placeholder="0.00"
                     Keyboard="Numeric"
                     BackgroundColor="Beige"

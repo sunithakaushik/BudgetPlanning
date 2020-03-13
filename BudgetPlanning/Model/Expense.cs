@@ -11,7 +11,13 @@ namespace BudgetPlanning.Model
         public DateTime Date { get; set; }
         public string Amount { get; set; }
         public ExpenseCategory Category { get; set; }
+        public Expense(string spent)
+        {
+            Amount = spent;
+        }
     }
+    
+    
     public enum ExpenseCategory
 
     {
