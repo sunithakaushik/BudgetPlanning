@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BudgetPlanning.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,7 +13,8 @@ namespace BudgetPlanning
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
-    {       
+    {
+        ExpenseCalculation expense;
         public MainPage()
         {
             InitializeComponent();
@@ -26,6 +28,13 @@ namespace BudgetPlanning
         private async void Budget_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new BudgetEntry());
+        }
+
+        private void DisplayCalculation()
+        {
+            ShowTotal.Text = expense.TotalExpensesCalculation();
+            ShowBudget.Text = expense.BalanceBudget();
+            ShowBalance.Text = expense.NewBalanceBudget();
         }
     }
 }
