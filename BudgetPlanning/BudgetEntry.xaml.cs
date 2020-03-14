@@ -24,14 +24,12 @@ namespace BudgetPlanning
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
             var files = Directory.GetFiles(App.FolderPath, "*.MonthlyBudget.txt");
             if (files.Length != 0)
             {
                 filename = files[0];
                 string budget = File.ReadAllText(filename);
                 editor.Text = budget;
-        //        Navigation.PushAsync(new ExpenseList());
             }
             else
             {
@@ -41,22 +39,27 @@ namespace BudgetPlanning
 
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
-            Budget budget = new Budget();
-            if (string.IsNullOrWhiteSpace(budget.Filename))
+            ExpenseCalculation goalSetting = new ExpenseCalculation();
+            if (!editor.Text.Equals(string.Empty))
             {
-                filename = Path.Combine(App.FolderPath,
-                    $"{Path.GetRandomFileName()}.MonthlyBudget.txt");
-                budget.Filename = filename;
-                budget.Amount = editor.Text;
-                File.WriteAllText(filename, editor.Text);
+                Budget budget = new Budget();
+                if (string.IsNullOrWhiteSpace(budget.Filename))
+                {
+                    filename = Path.Combine(App.FolderPath,
+                        $"{Path.GetRandomFileName()}.MonthlyBudget.txt");
+                    budget.Filename = filename;
+                    budget.Amount = editor.Text;
+                    ExpenseCalculation.BudgetGoalSetting = goalSetting.GetTotalBudget(budget.Amount);
+                    File.WriteAllText(filename, editor.Text);
+                }
+                else
+                {
+                    budget.Amount = editor.Text;
+                    File.WriteAllText(budget.Filename, editor.Text);
+                }
+                //    await Navigation.PopAsync();
+                await Navigation.PushAsync(new ExpenseList());
             }
-            else
-            {
-                budget.Amount = editor.Text;
-                File.WriteAllText(budget.Filename, editor.Text);
-            }
-        //    await Navigation.PopAsync();
-            await Navigation.PushAsync(new ExpenseList());
         }
 
         async void OnCancelButtonClicked(object sender, EventArgs e)

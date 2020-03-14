@@ -11,10 +11,24 @@ namespace BudgetPlanning.Model
         public DateTime Date { get; set; }
         public string Amount { get; set; }
         public ExpenseCategory Category { get; set; }
-        public Expense(string spent)
+        public Expense(string expense)
         {
-            Amount = spent;
+            Amount = expense;
         }
+
+        public Expense()
+        {
+
+        }
+       /* public Expense(string filename, string text, DateTime date, string amt, ExpenseCategory category)
+        {
+            Filename = filename;
+            Text = text;
+            Date = date;
+            Amount = amt;
+            Category = category;
+        }*/
+
     }
     
     

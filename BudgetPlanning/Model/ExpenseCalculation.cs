@@ -11,25 +11,21 @@ namespace BudgetPlanning.Model
 {
     class ExpenseCalculation
     {
+        public static double ExpenseTotal { get; set; }
+        public static double BudgetGoalSetting { get; set; }
         private static Budget budgetGoal = new Budget();
         private static List<Expense> expenses = new List<Expense>();
-        public static void GetTotalBudget(ObservableCollection<Budget> budgetAmount)
-        {            
-            double number;
-            BudgetEntry goal = new BudgetEntry();
-            var amt = budgetGoal.Amount;
-            if (Double.TryParse(amt, out number))
-            {
-                budgetAmount.Add(number);
-            }
-            
+        
+        public double GetTotalBudget(string amt)
+        {
+            budgetGoal.Amount = amt;
+            BudgetGoalSetting = double.Parse(amt);
+            return BudgetGoalSetting;
         }
-        public static void GetTotalExpenses(ObservableCollection<Expense> expense)
-        {            
-            double number;
-            if (Double.TryParse(expenses.Amount, out number))
-                
-
+        public double GetTotalExpenses(string expense)
+        {
+            ExpenseTotal += double.Parse(expense);
+            return ExpenseTotal;
         }
     }
 }

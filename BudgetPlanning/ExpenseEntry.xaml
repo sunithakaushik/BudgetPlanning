@@ -33,6 +33,7 @@
             <Label Text="Category:" FontSize="20" TextColor="Beige"/>
             <Picker x:Name="CategoryPicker"
                     Title="Choose Category" 
+                    ItemDisplayBinding="{Binding Category}"
                     TitleColor="Black"
                     BackgroundColor="Beige"/>
 

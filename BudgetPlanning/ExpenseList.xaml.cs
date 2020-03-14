@@ -21,15 +21,14 @@ namespace BudgetPlanning
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            ExpenseCalculation result = new ExpenseCalculation();
             var myexpenses = new List<Expense>();
             var files = Directory.EnumerateFiles(App.FolderPath, "*.expenses.csv");
-
+            double totalExpenses;
             foreach (var filename in files)
             {
                 string file = File.ReadAllText(filename);
                 string[] array = file.Split(',');
-                //string[] array = file.Split(new char[] { ',' });
 
                 myexpenses.Add(new Expense
                 {
@@ -39,6 +38,7 @@ namespace BudgetPlanning
                     Amount = array[1],
                     Category = (ExpenseCategory)Enum.ToObject(typeof(ExpenseCategory), int.Parse(array[2]))
                 });
+                totalExpenses = result.GetTotalExpenses(array[1]);
             }
             listView.ItemsSource = myexpenses.OrderByDescending(n => n.Date).ToList();
         }
